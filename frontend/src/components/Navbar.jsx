@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Navbar() {
+  const [stickey,setStickey]=useState(false)
+  useEffect(()=>{
+     const handleScroll=()=>{
+      if(window.scrollY>0){
+        setStickey(true)
+      }
+      else{
+        setStickey(false)
+      }
+     }
+     window.addEventListener('scroll',handleScroll)
+     return ()=>{
+      window.removeEventListener('scoll',handleScroll)
+     }
+  },{})
   const navItems =(<>
   <li><a>Home</a></li>
       <li><a>Course</a></li>
       <li><a>Contact</a></li>
       <li><a>About</a></li>
-  </>)
+  </>);
   return (
     <>
-    <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 " >
+    <div className={`max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 ${
+      stickey?
+    "stickey-navbar shadow-md bg-base-200 duration-300 transition-all ease-in-out":" "    }`} >
       
-      <div className="navbar bg-base-100">
+      <div className="navbar">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -88,7 +105,7 @@ function Navbar() {
       
     </div>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
