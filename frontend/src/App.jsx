@@ -1,21 +1,16 @@
 import React from "react";
-import Home from "./home/Home";
 import { Route, Routes } from "react-router-dom";
-s
+import Home from "./home/Home";
+
+import Courses from "./courses/Courses";
 
 function App() {
   return (
-    <>
-
-      <main className="min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-         
-        </Routes>
-      </main>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/course" element={<Courses />} />
+    </Routes>
   );
 }
 
 export default App;
-
