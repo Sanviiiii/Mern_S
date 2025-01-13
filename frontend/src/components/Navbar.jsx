@@ -1,6 +1,20 @@
 import React, { useEffect, useState } from 'react';
-
+import Login from './Login';
 function Navbar() {
+  const[theme,setTheme] = useState(localStorage.getItem("theme")?localStorage.getItem("theme"):"light");
+  const element=document.documentElement;
+  useEffect(()=>{
+    if(theme==="dark"){
+      element.classList.add("dark");
+      localStorage.setItem("theme","dark");
+      document.body.classList.add("dark");
+    }
+    else{
+      element.classList.remove("dark");
+      localStorage.setItem("theme","light");
+      document.body.classList.remove("dark");
+    }
+  },[])
   const [stickey, setStickey] = useState(false);
 
   useEffect(() => {
@@ -93,10 +107,11 @@ function Navbar() {
           <div>
             <a
               className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-              href="#login"
-            >
+              
+           onClick={()=>document.getElementById("my_modal_3").showModal()} >
               Login
             </a>
+            <Login />
           </div>
         </div>
       </div>
