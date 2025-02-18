@@ -46,13 +46,12 @@ function Signup() {
             <div className='flex justify-around mt-4'>
                     <button className='bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700'> Signup</button>
                     <p>Have Account? {" "} 
-                   <button className='underline text-blue-500 cursor-pointer'
+                  <button className='underline text-blue-500 cursor-pointer'
                              onClick={()=>document.getElementById("my_modal_3").showModal()} >
-
-                   Login
+                      Login
                    </button>  {" "}
                    <Login />
-                    </p> 
+                   </p> 
                 </div>
           </div>
         </div>
